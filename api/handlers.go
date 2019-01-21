@@ -3,11 +3,18 @@ package api
 import (
 	"github.com/fberrez/horus/lifx"
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 	"github.com/juju/errors"
 	log "github.com/sirupsen/logrus"
 )
 
 type (
+	KeyIn struct {
+		// ApiKey is the API key of the request.
+		// It is mandatory to execute secured requests.
+		ApiKey string `query:"key" description:"The API key of the request." validate:"required"`
+	}
+
 	// SelectorIn is the input struct, used in requests containing only a selector
 	SelectorIn struct {
 		// Selector is a unique identifier to select lights
@@ -81,7 +88,27 @@ type (
 		// Error contains informations about the error when the operation has not been successfull.
 		Error error `json:"error" description:"Informations concerning the error are here"`
 	}
+
+	// KeyOut is the struct which is returned when a request asks to generate
+	// a new API key.
+	KeyOut struct {
+		// Key is the API key of the application
+		Key string `json:"key" description:"API key of the application"`
+	}
 )
+
+// Returns
+func (a *API) generateKey(c *gin.Context) (*KeyOut, error) {
+	id, err := uuid.NewRandom()
+	if err != nil {
+		return nil, err
+	}
+
+	a.config.APIKey = id
+	return &KeyOut{
+		Key: id.String(),
+	}, nil
+}
 
 // getLights returns the list of corresponding lights in the selector.
 func (a *API) getDevices(c *gin.Context, in *SelectorIn) ([]*lifx.Lifx, error) {

@@ -2,12 +2,17 @@ package api
 
 import (
 	"fmt"
+	"io/ioutil"
+	"os"
 	"strings"
 
 	"github.com/fberrez/horus/lifx"
 	"github.com/juju/errors"
+	log "github.com/sirupsen/logrus"
+	yaml "gopkg.in/yaml.v2"
 )
 
+// updateLifx updates the list of Lifx devices.
 func (a *API) updateLifx() error {
 	for _, device := range a.config.Lifx {
 		err := device.Update()
@@ -16,6 +21,26 @@ func (a *API) updateLifx() error {
 		}
 	}
 
+	return nil
+}
+
+// saveConfig saves the actual config status in the config file.
+func (a *API) saveConfig() error {
+	filename := os.Getenv(configFile)
+
+	if filename == "" {
+		filename = defaultConfigFilePath
+	}
+	log.WithField("filename", filename).Info("Writing in config file")
+
+	configYaml, err := yaml.Marshal(a.config)
+	if err != nil {
+		return err
+	}
+
+	if err := ioutil.WriteFile(filename, configYaml, 0755); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -92,7 +117,7 @@ func (a *API) sortBySelector(selector *selector) ([]*lifx.Lifx, error) {
 				devices = append(devices, device)
 				continue
 			}
-		case uuid.name:
+		case id.name:
 			// If the value of the selector is identical to UUID of the device...
 			if selector.value == device.UUID {
 				devices = append(devices, device)

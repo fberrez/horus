@@ -4,7 +4,7 @@
 ![horus illustration](.github/Horus.png "Horus Illustration")
 
 ## Disclaimer:
-The current version (0.0.1) of the API is not secure! Does not expose it publicly!
+The API has only been tested with [LIFX Mini White](https://www.lifx.com/products/lifx-mini-white-e26).
 
 ## What is Horus?
 Horus is an API which handles your [LIFX](https://www.lifx.com/) devices in your local network. It uses UDP packets to interact with them. It has been designed to simplify your interactions with your LIFX devices, without cloud connection.
@@ -17,15 +17,19 @@ Horus is an API which handles your [LIFX](https://www.lifx.com/) devices in your
 ### Run the application
 1. Install [Docker](https://docs.docker.com/install/) and [docker-compose](https://docs.docker.com/compose/install/)
 2. `Optional` Edit the environment variables in the `docker-compose.yml` file.
+3. Download and launch the container
 ```sh
-$ docker build -t horus .
 $ docker-compose up -d
 ```
-4. Read the Swagger [documentation](https://app.swaggerhub.com/apis-docs/fberrez/Horus/0.0.1).
+3. Read the Swagger [documentation](https://app.swaggerhub.com/apis-docs/fberrez/Horus/0.0.2).
+4. Generate a new API key on `localhost:2020/unsecured/generate`
 3. Use it!
 
 ### Example of curl:
 ```sh
+# Generate a new API key
+$ curl -iL -X GET 'localhost:2020/unsecured/generate'
+
 # Get all of your LIFX devices
 $ curl -iL -X GET 'localhost:2020/lights/'
 

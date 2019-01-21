@@ -215,6 +215,7 @@
   analyzer-version = 1
   input-imports = [
     "github.com/gin-gonic/gin",
+    "github.com/google/uuid",
     "github.com/juju/errors",
     "github.com/loopfz/gadgeto/tonic",
     "github.com/loopfz/gadgeto/tonic/utils/jujerr",
