@@ -1,0 +1,30 @@
+# source is the unique identifier for the client.
+# Must be positive, between 0 and 2,147,483,647.
+source: 437
+
+# domain is the network where all your lufix devices are connected.
+# Must be written with the CIRD form (ex: `192.168.1.0/24 for a local network)
+domain: 192.168.1.0/24
+
+# maxBrightness is the default brightness value.
+# This value is used when you toggle a device (/lights/toggle).
+# Must be positive, between 0 and 65535.
+maxBrightness: 65535
+
+# lifx is a collection containing your Lifx devices.
+# Initiliaze it by just adding their informations.
+# ex:
+#   lifx:
+#     - uuid: 33d07008-2082-4d7f-82f3-04c275b70055
+#       address: 192.168.1.22
+#       port: "56700"
+#       protocol: "udp"
+#     - uuid: add99b6c-ce82-452f-bbf7-a9bf32f3aa15
+#       address: 192.168.1.15
+#       port: "56700"
+#       protocol: "udp"
+lifx:
+  - uuid: 33d07008-2082-4d7f-82f3-04c275b70055
+    address: 192.168.1.22
+    port: "56700"
+    protocol: "udp"

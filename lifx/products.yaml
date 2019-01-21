@@ -1,0 +1,177 @@
+# List of LIFX products. More informations: https://lan.developer.lifx.com/docs/lifx-products
+# WARNING: Do not edit this list, unless you know what you do.
+- id: 1
+  name: "Original 1000"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: false
+    hasMultiZone: false
+- id: 3
+  name: "Color 650"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: false
+    hasMultiZone: false
+- id: 10
+  name: "White 800 (Low Voltage)"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: false
+    hastIR: false
+    hasMultiZone: false
+- id: 11
+  name: "White 800 (High Voltage)"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: false
+    hastIR: false
+    hasMultiZone: false
+- id: 18
+  name: "White 900 BR30 (Low Voltage)"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: false
+    hastIR: false
+    hasMultiZone: false
+- id: 20
+  name: "Color 1000 BR30"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: false
+    hasMultiZone: false
+- id: 22
+  name: "Color 1000"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: false
+    hasMultiZone: false
+- id: 27
+  name: "LIFX A19"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: false
+    hasMultiZone: false
+- id: 28
+  name: "LIFX BR30"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: false
+    hasMultiZone: false
+- id: 29
+  name: "LIFX+ A19"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: true
+    hasMultiZone: false
+- id: 30
+  name: "LIFX+ BR30"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: true
+    hasMultiZone: false
+- id: 31
+  name: "LIFX Z"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: false
+    hasMultiZone: true
+- id: 32
+  name: "LIFX Z 2"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: false
+    hasMultiZone: true
+- id: 36
+  name: "LIFX Downlight"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: false
+    hasMultiZone: false
+- id: 37
+  name: "LIFX Downlight"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: false
+    hasMultiZone: false
+- id: 38
+  name: "LIFX Beam"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: false
+    hasMultiZone: true
+- id: 43
+  name: "LIFX A19"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: false
+    hasMultiZone: false
+- id: 44
+  name: "LIFX BR30"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: false
+    hasMultiZone: false
+- id: 45
+  name: "LIFX+ A19"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: true
+    hasMultiZone: false
+- id: 46
+  name: "LIFX+ BR30"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: true
+    hasMultiZone: false
+- id: 49
+  name: "LIFX Mini"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: false
+    hasMultiZone: false
+- id: 50
+  name: "LIFX Mini Day and Dusk"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: false
+    hastIR: false
+    hasMultiZone: false
+- id: 51
+  name: "LIFX Mini White"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: false
+    hastIR: false
+    hasMultiZone: false
+- id: 52
+  name: "LIFX GU10"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: false
+    hasMultiZone: false
+- id: 55
+  name: "LIFX Tile"
+  vendor: "LIFX"
+  capabilities:
+    hasColor: true
+    hastIR: false
+    hasMultiZone: false
