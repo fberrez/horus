@@ -21,23 +21,19 @@ Horus is an API which handles your [LIFX](https://www.lifx.com/) devices in your
 ```sh
 $ docker-compose up -d
 ```
-3. Read the Swagger [documentation](https://app.swaggerhub.com/apis-docs/fberrez/Horus/0.0.2).
-4. Generate a new API key on `localhost:2020/unsecured/generate`
-3. Use it!
+4. Read the Swagger [documentation](https://app.swaggerhub.com/apis-docs/fberrez/Horus/0.0.3).
+5. Use it!
 
 ### Example of curl:
 ```sh
-# Generate a new API key
-$ curl -iL -X GET 'localhost:2020/unsecured/generate'
-
 # Get all of your LIFX devices
 $ curl -iL -X GET 'localhost:2020/lights/'
 
 # Toggle your lights
-$ curl -iL -X POST -H "Content-Type:application/json" --data '{"duration":1500}' 'localhost:2020/lights/toggle?selector=all'
+$ curl -iL -X POST -H "Content-Type:application/json" --data '{"duration":1500}' 'localhost:2020/lights/toggle?selector=all&key=086bf714-7d7f-4f1c-a195-ba2809827374'
 
 # Toggle your light with the UUID `33d07008-2082-4d7f-82f3-04c275b70055`
-$ curl -iL -X POST -H "Content-Type:application/json" --data '{"duration":1500}' 'localhost:2020/lights/toggle?selector=uuid:33d07008-2082-4d7f-82f3-04c275b70055'
+$ curl -iL -X POST -H "Content-Type:application/json" --data '{"duration":1500}' 'localhost:2020/lights/toggle?selector=uuid:33d07008-2082-4d7f-82f3-04c275b70055&key=086bf714-7d7f-4f1c-a195-ba2809827374'
 
 # Edit the color, the power status and the label your light called `foo`
 $ curl -iL -X PUT -H "Content-type:application/json" --data '{
@@ -50,11 +46,13 @@ $ curl -iL -X PUT -H "Content-type:application/json" --data '{
   "duration": 1500,
   "power": "on",
   "label": "bar"
-}' 'localhost:2020/lights/state?selector=label:foo'
+}' 'localhost:2020/lights/state?selector=label:foo&key=086bf714-7d7f-4f1c-a195-ba2809827374'
 ```
 
 ## Swagger documentation
-You can generate the Swagger (OpenAPI) documentation by running the application and going on:
+You can find the documentation [here](https://app.swaggerhub.com/apis-docs/fberrez/Horus/0.0.3).
+
+You can also generate the Swagger (OpenAPI) documentation by running the application and going on:
 ```sh
 http://localhost:2020/unsecured/openapi.json
 
@@ -63,7 +61,6 @@ $ curl -X GET 'localhost:2020/unsecured/openapi.json'
 ```
 
 ## TODO list:
-- Add location and group routes (/lights/group & /lights/location)
-- Add API Key
+- Add location and group routes (/lights/group & /lights/location
 - Try with other devices such as [Mini Color](https://www.lifx.com/collections/featured-products/products/lifx-mini-color-e26), [Tile Kit](https://www.lifx.com/collections/featured-products/products/lifx-tile), [Plus](https://www.lifx.com/collections/featured-products/products/lifx-plus-e26)
 - Open to other brands

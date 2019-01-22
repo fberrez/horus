@@ -1,3 +1,8 @@
+# apiKey is a key to use your protected API paths such as /lights.
+# Must be a valid version 4 UUID.
+# Generate a new UUID here: https://www.uuidgenerator.net/version4
+apiKey: 086bf714-7d7f-4f1c-a195-ba2809827374
+
 # source is the unique identifier for the client.
 # Must be positive, between 0 and 2,147,483,647.
 source: 437

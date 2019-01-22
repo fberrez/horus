@@ -13,5 +13,5 @@ COPY . ./
 RUN CGO_ENABLED=0 make
 
 FROM scratch
-COPY --from=builder /go/src/github.com/fberrez/horus/horus ./
+COPY --from=builder /go/src/github.com/fberrez/horus/output/horus ./
 ENTRYPOINT ["./horus"]

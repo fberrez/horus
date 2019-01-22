@@ -1,6 +1,6 @@
-BUILD_ARGS := -ldflags "-X github.com/fberrez/build.Version=0.1"
+BUILD_ARGS := -ldflags "-X github.com/fberrez/build.Version=0.0.3"
 MAIN_LOCATION := ./cmd/horus
-BINARY := horus
+BINARY := output/horus
 
 all:
 	go build -o $(BINARY) $(BUILD_ARGS) $(MAIN_LOCATION)/*.go

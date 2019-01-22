@@ -34,7 +34,7 @@ type (
 
 	// Config contains all informations needed to run the application.
 	Config struct {
-		// APIKey is the key of the API
+		// APIKey is the key of the API. It used to secure your protected API paths.
 		APIKey uuid.UUID `yaml:"apiKey" json:"apiKey"`
 
 		// Source is the source identifier, used to identify the client from others.
@@ -130,40 +130,39 @@ func New() (*API, error) {
 	infos := &openapi.Info{
 		Title:       "Horus - Up your local LIFX devices",
 		Description: "Horus is an API which handles your LIFX devices in your local network. It uses UDP packets to interact with them. It has been designed to simplify your interactions with your LIFX devices, without cloud connection.",
-		Version:     "0.0.2",
+		Version:     "0.0.3",
 	}
 
 	// Defines groups of routes
-	lightsGroup := f.Group("/lights", "Lights", "")
-	unsecuredGroup := f.Group("/unsecured", "Unsecured", "")
+	lightsGroup := f.Group("/lights", "Lights", "Group of paths to interact with your lights.")
+	unsecuredGroup := f.Group("/unsecured", "Unsecured", "Group of unsecured paths.")
 
 	// Defines Unsecured group's routes
-	unsecuredGroup.GET("/openapi.json", nil, f.OpenAPI(infos, "json"))
-	unsecuredGroup.GET("/generate", []fizz.OperationOption{
-		fizz.Summary("Generates an API key."),
-		fizz.Description("Returns an API key which must be used in /lights routes."),
-	}, tonic.Handler(api.generateKey, http.StatusOK))
+	unsecuredGroup.GET("/openapi.json", []fizz.OperationOption{
+		fizz.Summary("Generates a Swagger documentation in JSON"),
+		fizz.Description("Returns a Swagger JSON containing all informations about the API."),
+	}, f.OpenAPI(infos, "json"))
 
 	// Defines Lights group's middlewares
 	lightsGroup.Use(gin.HandlerFunc(api.verifyKey))
 
 	// Defines Lights group's routes
 	lightsGroup.GET("/", []fizz.OperationOption{
-		fizz.Summary("Gets a list of corresponding lights in the selector."),
-		fizz.Description("Returns a list of lights with their informations."),
-		fizz.Response(string(http.StatusNotFound), "cannot find corresponding lights in the selector.", nil, nil),
+		fizz.Summary("Gets a list of corresponding lights to the selector."),
+		fizz.Description("Returns a list of lights with their information."),
+		fizz.Response(string(http.StatusNotFound), "cannot find corresponding lights to the selector.", nil, nil),
 	}, tonic.Handler(api.getDevices, http.StatusOK))
 
 	lightsGroup.PUT("/state", []fizz.OperationOption{
 		fizz.Summary("Updates the state of the corresponding lights."),
 		fizz.Description("Updates the lights state with the given settings."),
-		fizz.Response(string(http.StatusNotFound), "cannot find corresponding lights in the selector.", nil, nil),
+		fizz.Response(string(http.StatusNotFound), "cannot find corresponding lights to the selector.", nil, nil),
 	}, tonic.Handler(api.setState, http.StatusOK))
 
 	lightsGroup.POST("/toggle", []fizz.OperationOption{
 		fizz.Summary("Toggles power status of corresponding lights."),
 		fizz.Description(""),
-		fizz.Response(string(http.StatusNotFound), "cannot find corresponding lights in the selector.", nil, nil),
+		fizz.Response(string(http.StatusNotFound), "cannot find corresponding lights to the selector.", nil, nil),
 	}, tonic.Handler(api.toggle, http.StatusOK))
 
 	tonic.SetErrorHook(jujerr.ErrHook)
