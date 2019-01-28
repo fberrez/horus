@@ -6,6 +6,8 @@
 ## Disclaimer:
 The API has only been tested with [LIFX Mini White](https://www.lifx.com/products/lifx-mini-white-e26).
 
+This project is a POC and does not have to be used in a production environment.
+
 ## What is Horus?
 Horus is an API which handles your [LIFX](https://www.lifx.com/) devices in your local network. It uses UDP packets to interact with them. It has been designed to simplify your interactions with your LIFX devices, without cloud connection.
 
@@ -21,7 +23,7 @@ Horus is an API which handles your [LIFX](https://www.lifx.com/) devices in your
 ```sh
 $ docker-compose up -d
 ```
-4. Read the Swagger [documentation](https://app.swaggerhub.com/apis-docs/fberrez/Horus/0.0.3).
+4. Read the Swagger [documentation](https://app.swaggerhub.com/apis-docs/fberrez/Horus).
 5. Use it!
 
 ### Example of curl:
@@ -50,7 +52,7 @@ $ curl -iL -X PUT -H "Content-type:application/json" --data '{
 ```
 
 ## Swagger documentation
-You can find the documentation [here](https://app.swaggerhub.com/apis-docs/fberrez/Horus/0.0.3).
+You can find the documentation [here](https://app.swaggerhub.com/apis-docs/fberrez/Horus).
 
 You can also generate the Swagger (OpenAPI) documentation by running the application and going on:
 ```sh

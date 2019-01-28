@@ -14,7 +14,7 @@ domain: 192.168.1.0/24
 # maxBrightness is the default brightness value.
 # This value is used when you toggle a device (/lights/toggle).
 # Must be positive, between 0 and 65535.
-maxBrightness: 65535
+maxBrightness: 10000
 
 # lifx is a collection containing your Lifx devices.
 # Initiliaze it by just adding their informations.

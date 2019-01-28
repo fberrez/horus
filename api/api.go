@@ -150,19 +150,19 @@ func New() (*API, error) {
 	lightsGroup.GET("/", []fizz.OperationOption{
 		fizz.Summary("Gets a list of corresponding lights to the selector."),
 		fizz.Description("Returns a list of lights with their information."),
-		fizz.Response(string(http.StatusNotFound), "cannot find corresponding lights to the selector.", nil, nil),
+		fizz.Response("404", "cannot find corresponding lights to the selector.", nil, nil),
 	}, tonic.Handler(api.getDevices, http.StatusOK))
 
 	lightsGroup.PUT("/state", []fizz.OperationOption{
 		fizz.Summary("Updates the state of the corresponding lights."),
 		fizz.Description("Updates the lights state with the given settings."),
-		fizz.Response(string(http.StatusNotFound), "cannot find corresponding lights to the selector.", nil, nil),
+		fizz.Response("404", "cannot find corresponding lights to the selector.", nil, nil),
 	}, tonic.Handler(api.setState, http.StatusOK))
 
 	lightsGroup.POST("/toggle", []fizz.OperationOption{
 		fizz.Summary("Toggles power status of corresponding lights."),
 		fizz.Description(""),
-		fizz.Response(string(http.StatusNotFound), "cannot find corresponding lights to the selector.", nil, nil),
+		fizz.Response("404", "cannot find corresponding lights to the selector.", nil, nil),
 	}, tonic.Handler(api.toggle, http.StatusOK))
 
 	tonic.SetErrorHook(jujerr.ErrHook)
